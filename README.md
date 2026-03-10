@@ -27,4 +27,4 @@
 <img width="100%" alt="Migration Script 2" src="https://github.com/user-attachments/assets/249f305c-37a2-4fa9-b1fd-ef4bf95a061c" />
 
 ### Database 
-<img width="100%" alt="Database Structure" src="https://github.com/user-attachments/assets/ed95954d-f0b6-44dc-9c99-0add286cbcd2" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8457a38a-36e6-424f-8c5c-814aa374ea76" />
