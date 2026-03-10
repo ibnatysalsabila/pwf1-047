@@ -1,10 +1,10 @@
-## PRAKTIKUM 1: Setup & UI Dasar
+## PRAKTIKUM 1
 ### Hasil Tampilan
 ![Hasil Tampilan](foto/Hasil.png)
 
 ---
 
-## PRAKTIKUM 2: Otentikasi & Profile
+## PRAKTIKUM 2
 ### Tampilan About
 ![Tampilan About](foto/About.png)
 
@@ -16,7 +16,7 @@
 
 ---
 
-## PRAKTIKUM 3: Database & Eloquent Model
+## PRAKTIKUM 3
 
 ### Model 
 <img width="100%" alt="Model Implementation 1" src="https://github.com/user-attachments/assets/5143eb7e-f0d6-4997-b52d-cb310119e47e" />
