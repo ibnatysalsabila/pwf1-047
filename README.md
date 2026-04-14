@@ -53,6 +53,21 @@
 
 ### DATABASE
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cf58c2a6-cf68-44d1-8f1a-b7993c1f8b22" />
+---
+
+## PRAKTIKUM 6
+### VALIDASI STORE (CREATE)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6fa1b3a3-31f4-4ebb-8521-35686c3dc4b6" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7968ad8a-8469-43d4-806f-5455331aa7aa" />
+
+### VALIDASI STORE (UPDATE)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/24c75dd2-98c7-4f36-a917-1207d0c193b4" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6b09e4cb-b4e7-4ac3-989b-cbb82b52c0b7" />
+
+
+
+
+
 
 
 
