@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\QueryException;
 
 class ProductController extends Controller
 {
@@ -25,20 +29,37 @@ class ProductController extends Controller
         return view('product.create', compact('users'));
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        $this->authorize('manage-product');
+        $validated = $request->validated();
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'qty' => 'required|integer|min:0',
-            'price' => 'required|numeric|min:0',
-            'user_id' => 'required|exists:users,id',
-        ]);
+        try {
+            Product::create($validated);
 
-        Product::create($request->all());
+            return redirect()
+                ->route('product.index')
+                ->with('success', 'Produk berhasil ditambahkan.');
 
-        return redirect()->route('product.index')->with('success', 'Product created successfully.');
+        } catch (QueryException $e) {
+            Log::error('Product store database error', [
+                'message' => $e->getMessage(),
+            ]);
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'Terjadi kesalahan database saat menyimpan produk.');
+
+        } catch (\Throwable $e) {
+            Log::error('Product store unexpected error', [
+                'message' => $e->getMessage(),
+            ]);
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'Terjadi kesalahan yang tidak terduga.');
+        }
     }
 
     public function show(Product $product)
@@ -54,26 +75,15 @@ class ProductController extends Controller
         return view('product.edit', compact('product', 'users'));
     }
 
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
         $this->authorize('update', $product);
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'qty' => 'required|integer|min:0', // Pastikan divalidasi sebagai 'qty'
-            'price' => 'required|numeric|min:0',
-            'user_id' => 'required|exists:users,id',
-        ]);
+        $validated = $request->validated();
 
-        // Jika form kamu mengirim 'quantity', kita harus mengubahnya menjadi 'qty' sebelum update
-        $data = $request->all();
-        if ($request->has('quantity')) {
-            $data['qty'] = $request->quantity;
-        }
+        $product->update($validated);
 
-        $product->update($data);
-
-        return redirect()->route('product.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('product.index')->with('success', 'Produk berhasil diperbarui.');
     }
 
     public function delete(Product $product)

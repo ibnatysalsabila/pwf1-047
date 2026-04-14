@@ -36,7 +36,9 @@
 
                         
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Product Name</label>
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Product Name <span class="text-red-500">*</span>
+                            </label>
                             <input type="text" name="name" id="name" value="<?php echo e(old('name', $product->name)); ?>"
                                 class="block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 px-4 py-2.5 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
                                 placeholder="e.g. Laptop, Camera, etc.">
@@ -55,7 +57,9 @@ unset($__errorArgs, $__bag); ?>
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label for="qty" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Quantity</label>
+                                <label for="qty" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    Quantity <span class="text-red-500">*</span>
+                                </label>
                                 <input type="number" name="qty" id="qty" value="<?php echo e(old('qty', $product->qty)); ?>" min="0"
                                     class="block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
                                 <?php $__errorArgs = ['qty'];
@@ -71,7 +75,9 @@ unset($__errorArgs, $__bag); ?>
                             </div>
 
                             <div>
-                                <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Price (Rp)</label>
+                                <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    Price (Rp) <span class="text-red-500">*</span>
+                                </label>
                                 <input type="number" name="price" id="price" value="<?php echo e(old('price', $product->price)); ?>" min="0" step="0.01"
                                     class="block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
                                 <?php $__errorArgs = ['price'];
@@ -89,13 +95,15 @@ unset($__errorArgs, $__bag); ?>
 
                         
                         <div>
-                            <label for="user_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Product Owner</label>
+                            <label for="user_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Owner <span class="text-red-500">*</span>
+                            </label>
                             <select name="user_id" id="user_id"
                                 class="block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
-                                <option value="" disabled>Select an owner</option>
+                                <option value="" disabled>Select Owner --</option>
                                 <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option value="<?php echo e($user->id); ?>" <?php echo e(old('user_id', $product->user_id) == $user->id ? 'selected' : ''); ?>>
-                                        <?php echo e($user->name); ?> — <?php echo e($user->email); ?>
+                                        <?php echo e($user->name); ?>
 
                                     </option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -122,7 +130,7 @@ unset($__errorArgs, $__bag); ?>
                         </a>
                         <button type="submit"
                             class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg shadow-sm transition">
-                            Update Product
+                            Save Product
                         </button>
                     </div>
                 </form>
