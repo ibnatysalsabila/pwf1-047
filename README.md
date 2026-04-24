@@ -63,11 +63,14 @@
 ### VALIDASI STORE (UPDATE)
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/24c75dd2-98c7-4f36-a917-1207d0c193b4" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6b09e4cb-b4e7-4ac3-989b-cbb82b52c0b7" />
+---
 
+## PRAKTIKUM 7
+### BUTTON EDIT & DELETE
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ce0cc871-500b-4a1b-9e6f-b604b6e25c56" />
 
-
-
-
+### HASIL
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1040bfd5-0e48-4051-a1a6-b768a457f622" />
 
 
 
