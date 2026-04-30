@@ -72,6 +72,31 @@
 ### HASIL
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1040bfd5-0e48-4051-a1a6-b768a457f622" />
 
+---
+## UCP 1
+### Tampilan Form Tambah Kategori
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2cfc13ef-d557-46f1-9fd1-a5ab6f17a74e" />
+
+### Tampilan List Category sesudah di tambahkan
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/39dd1745-fd10-4fe6-bd94-ce85bfa8d2c6" />
+
+### Tampilan Edit Kategori
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/11185bd8-a2e6-47ab-a2e9-24c5b77d6cc7" />
+
+### Tampilan Form Add Product ubah dengan relasi ke Kategori
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/90e2c166-b1cc-42e3-8a75-7b44e252328b" />
+
+### Tampilan Form Edit Product ubah dengan relasi ke Kategori
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/64cfa911-bc54-473a-8ed6-822cdb739577" />
+
+### Tampilan Product List sesudah di relasikan ke kategori
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/17216f81-df36-435a-987d-c1901a785cfa" />
+
+### Tampilan  gates untuk memberikan rules akses untuk ke Category 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6cc71a2e-6199-4b19-9a2c-93693988c3a3" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2aedd43c-a7fe-4a95-b537-b1d077f01ece" />
+
+
 
 
 
