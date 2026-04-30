@@ -10,11 +10,8 @@
 <?php $component->withAttributes([]); ?>
     <div class="py-10">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            
             <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
 
-                
                 <div class="px-6 py-5 border-b border-gray-100 dark:border-gray-700 flex items-center gap-3">
                     <a href="<?php echo e(route('product.index')); ?>"
                         class="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition shrink-0">
@@ -28,7 +25,6 @@
                     </div>
                 </div>
 
-                
                 <form action="<?php echo e(route('product.update', $product->id)); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('PUT'); ?>
@@ -43,6 +39,33 @@
                                 class="block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 px-4 py-2.5 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
                                 placeholder="e.g. Laptop, Camera, etc.">
                             <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <p class="mt-1.5 text-xs text-red-500 dark:text-red-400"><?php echo e($message); ?></p>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+
+                        
+                        <div>
+                            <label for="category_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Kategori
+                            </label>
+                            <select name="category_id" id="category_id"
+                                class="block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                                <option value="">-- Pilih Kategori --</option>
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($category->id); ?>" <?php echo e(old('category_id', $product->category_id) == $category->id ? 'selected' : ''); ?>>
+                                        <?php echo e($category->name); ?>
+
+                                    </option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </select>
+                            <?php $__errorArgs = ['category_id'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -73,7 +96,6 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                             </div>
-
                             <div>
                                 <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Price (Rp) <span class="text-red-500">*</span>
@@ -122,7 +144,6 @@ unset($__errorArgs, $__bag); ?>
 
                     </div>
 
-                    
                     <div class="px-6 py-4 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-100 dark:border-gray-700 flex items-center justify-end gap-3">
                         <a href="<?php echo e(route('product.index')); ?>"
                             class="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">
@@ -136,7 +157,6 @@ unset($__errorArgs, $__bag); ?>
                 </form>
 
             </div>
-
         </div>
     </div>
  <?php echo $__env->renderComponent(); ?>
@@ -148,5 +168,4 @@ unset($__errorArgs, $__bag); ?>
 <?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
-<?php endif; ?>
-<?php /**PATH D:\laragon\www\pwf1-047\resources\views/product/edit.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH D:\laragon\www\pwf1-047\resources\views/product/edit.blade.php ENDPATH**/ ?>

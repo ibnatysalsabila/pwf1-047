@@ -1,11 +1,8 @@
 <x-app-layout>
     <div class="py-10">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            {{-- Card --}}
             <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
 
-                {{-- Card Header --}}
                 <div class="px-6 py-5 border-b border-gray-100 dark:border-gray-700 flex items-center gap-3">
                     <a href="{{ route('product.index') }}"
                         class="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition shrink-0">
@@ -19,7 +16,6 @@
                     </div>
                 </div>
 
-                {{-- Form Body --}}
                 <form action="{{ route('product.update', $product->id) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -38,7 +34,26 @@
                             @enderror
                         </div>
 
-                        {{-- Quantity & Price (side by side) --}}
+                        {{-- Kategori --}}
+                        <div>
+                            <label for="category_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Kategori
+                            </label>
+                            <select name="category_id" id="category_id"
+                                class="block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                                <option value="">-- Pilih Kategori --</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <p class="mt-1.5 text-xs text-red-500 dark:text-red-400">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        {{-- Quantity & Price --}}
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label for="qty" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -50,7 +65,6 @@
                                     <p class="mt-1.5 text-xs text-red-500 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
-
                             <div>
                                 <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Price (Rp) <span class="text-red-500">*</span>
@@ -84,7 +98,6 @@
 
                     </div>
 
-                    {{-- Card Footer --}}
                     <div class="px-6 py-4 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-100 dark:border-gray-700 flex items-center justify-end gap-3">
                         <a href="{{ route('product.index') }}"
                             class="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">
@@ -98,7 +111,6 @@
                 </form>
 
             </div>
-
         </div>
     </div>
 </x-app-layout>

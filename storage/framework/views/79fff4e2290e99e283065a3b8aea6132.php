@@ -8,20 +8,27 @@
 <?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-     <?php $__env->slot('header', null, []); ?> 
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <?php echo e(__('Dashboard')); ?>
-
-        </h2>
-     <?php $__env->endSlot(); ?>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <p class="text-lg font-semibold mb-4">Dashboard</p>
-                    <div class="inline-block px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-sm">
-                        Role: <span class="font-bold capitalize"><?php echo e(Auth::user()->role); ?></span>
+            <div class="bg-[#1a202c] overflow-hidden shadow-sm sm:rounded-lg border border-gray-700">
+                <div class="p-10 text-gray-100">
+                    <div class="space-y-2 text-lg font-medium">
+                        <div class="flex">
+                            <span class="w-32">Nama</span>
+                            <span>: Ibnaty Salsabila Toisutta</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-32">NIM</span>
+                            <span>: 20230140047</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-32">Program Studi</span>
+                            <span>: Teknologi Informasi</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-32">Hobi</span>
+                            <span>: Main Padel</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,4 +43,4 @@
 <?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
-<?php endif; ?><?php /**PATH D:\laragon\www\pwf1-047\resources\views/dashboard.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH D:\laragon\www\pwf1-047\resources\views/about.blade.php ENDPATH**/ ?>

@@ -31,6 +31,7 @@
                         </div>
 
                         
+                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-product')): ?>
                         <div class="flex items-center gap-2">
                             <a href="<?php echo e(route('product.edit', $product)); ?>"
                                 class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg border border-amber-300 dark:border-amber-600 text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/30 transition">
@@ -57,6 +58,7 @@
                                 </button>
                             </form>
                         </div>
+                        <?php endif; ?>
                     </div>
 
                     
@@ -112,6 +114,7 @@
                             </div>
                         </div>
 
+                        
                         <div class="flex items-center px-5 py-4">
                             <div class="w-32 shrink-0 text-sm text-gray-500 dark:text-gray-400">Updated At</div>
                             <div class="text-sm text-gray-800 dark:text-gray-100">
@@ -119,7 +122,8 @@
 
                             </div>
                         </div>
-                    </div> 
+
+                    </div>
                 </div>
             </div>
         </div>

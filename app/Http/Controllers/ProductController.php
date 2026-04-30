@@ -4,29 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Category;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\QueryException;
 
 class ProductController extends Controller
 {
-    use AuthorizesRequests; 
+    use AuthorizesRequests;
 
     public function index()
     {
-        $products = Product::with('user')->paginate(10);
+        $products = Product::with('user', 'category')->paginate(10);
         return view('product.index', compact('products'));
     }
 
     public function create()
     {
-        $this->authorize('manage-product'); 
-        
-        $users = User::all();
-        return view('product.create', compact('users'));
+        $this->authorize('manage-product');
+
+        $users      = User::all();
+        $categories = Category::all();
+        return view('product.create', compact('users', 'categories'));
     }
 
     public function store(StoreProductRequest $request)
@@ -41,9 +43,7 @@ class ProductController extends Controller
                 ->with('success', 'Produk berhasil ditambahkan.');
 
         } catch (QueryException $e) {
-            Log::error('Product store database error', [
-                'message' => $e->getMessage(),
-            ]);
+            Log::error('Product store database error', ['message' => $e->getMessage()]);
 
             return redirect()
                 ->back()
@@ -51,9 +51,7 @@ class ProductController extends Controller
                 ->with('error', 'Terjadi kesalahan database saat menyimpan produk.');
 
         } catch (\Throwable $e) {
-            Log::error('Product store unexpected error', [
-                'message' => $e->getMessage(),
-            ]);
+            Log::error('Product store unexpected error', ['message' => $e->getMessage()]);
 
             return redirect()
                 ->back()
@@ -71,8 +69,9 @@ class ProductController extends Controller
     {
         $this->authorize('update', $product);
 
-        $users = User::all();
-        return view('product.edit', compact('product', 'users'));
+        $users      = User::all();
+        $categories = Category::all();
+        return view('product.edit', compact('product', 'users', 'categories'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
@@ -80,7 +79,6 @@ class ProductController extends Controller
         $this->authorize('update', $product);
 
         $validated = $request->validated();
-
         $product->update($validated);
 
         return redirect()->route('product.index')->with('success', 'Produk berhasil diperbarui.');
