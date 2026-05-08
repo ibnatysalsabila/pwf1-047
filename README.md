@@ -96,6 +96,28 @@
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6cc71a2e-6199-4b19-9a2c-93693988c3a3" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2aedd43c-a7fe-4a95-b537-b1d077f01ece" />
 
+---
+## PRAKTIKUM 9
+### AUTH TOKEN
+<img width="1919" height="1008" alt="Screenshot 2026-05-08 085308" src="https://github.com/user-attachments/assets/356f405a-c62e-41f6-8c9f-ea43211bbf58" />
+
+### CATEGORY
+### GET
+<img width="1919" height="1005" alt="image" src="https://github.com/user-attachments/assets/5ddb15d8-e7b1-4ec0-8095-a6bf97ed162b" />
+
+### POST
+<img width="1919" height="1009" alt="image" src="https://github.com/user-attachments/assets/8c5751a3-5fd7-4cf9-9075-3ac50850c6b5" />
+
+### PUT
+<img width="1919" height="1011" alt="image" src="https://github.com/user-attachments/assets/1d2e6a7f-bc5a-4d66-915a-d7ea35c296e9" />
+
+### DELETE
+<img width="1919" height="1011" alt="image" src="https://github.com/user-attachments/assets/dc9ee7c4-63c5-4787-9d0a-2900ac3b3a5e" />
+
+
+
+
+
 
 
 
