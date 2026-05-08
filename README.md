@@ -95,6 +95,7 @@
 ### Tampilan  gates untuk memberikan rules akses untuk ke Category 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6cc71a2e-6199-4b19-9a2c-93693988c3a3" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2aedd43c-a7fe-4a95-b537-b1d077f01ece" />
+
 ---
 ## PRAKTIKUM 9
 ### AUTH TOKEN
@@ -104,7 +105,6 @@
 ### GET
 <img width="1919" height="1005" alt="image" src="https://github.com/user-attachments/assets/5ddb15d8-e7b1-4ec0-8095-a6bf97ed162b" />
 
-<img width="1919" height="1007" alt="image" src="https://github.com/user-attachments/assets/ecec8057-6863-48ed-b309-30bc0a4466aa" />
 ### POST
 <img width="1919" height="1009" alt="image" src="https://github.com/user-attachments/assets/8c5751a3-5fd7-4cf9-9075-3ac50850c6b5" />
 
