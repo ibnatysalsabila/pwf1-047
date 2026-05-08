@@ -4,92 +4,62 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\User;
-use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Database\QueryException;
 
 class ProductController extends Controller
 {
-    use AuthorizesRequests;
-
     public function index()
     {
-        $products = Product::with('user', 'category')->paginate(10);
+        $products = Product::all();
         return view('product.index', compact('products'));
-    }
-
-    public function create()
-    {
-        $this->authorize('manage-product');
-
-        $users      = User::all();
-        $categories = Category::all();
-        return view('product.create', compact('users', 'categories'));
     }
 
     public function store(StoreProductRequest $request)
     {
         $validated = $request->validated();
 
-        try {
-            Product::create($validated);
-
-            return redirect()
-                ->route('product.index')
-                ->with('success', 'Produk berhasil ditambahkan.');
-
-        } catch (QueryException $e) {
-            Log::error('Product store database error', ['message' => $e->getMessage()]);
-
-            return redirect()
-                ->back()
-                ->withInput()
-                ->with('error', 'Terjadi kesalahan database saat menyimpan produk.');
-
-        } catch (\Throwable $e) {
-            Log::error('Product store unexpected error', ['message' => $e->getMessage()]);
-
-            return redirect()
-                ->back()
-                ->withInput()
-                ->with('error', 'Terjadi kesalahan yang tidak terduga.');
-        }
+        Product::create($validated);
+        return redirect()->route('product.index')->with('success', 'Product created successfully.');
     }
 
-    public function show(Product $product)
+    public function create()
     {
+        $users = User::orderBy('name')->get();
+        $categories = \App\Models\Category::orderBy('name')->get(); 
+        return view('product.create', compact('users', 'categories'));
+    }
+
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
         return view('product.view', compact('product'));
+    }
+
+    public function update(UpdateProductRequest $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        Gate::authorize('update', $product);
+
+        $validated = $request->validated();
+
+        $product->update($validated);
+        return redirect()->route('product.index')->with('success', 'Product updated successfully.');
     }
 
     public function edit(Product $product)
     {
-        $this->authorize('update', $product);
-
-        $users      = User::all();
-        $categories = Category::all();
-        return view('product.edit', compact('product', 'users', 'categories'));
+        Gate::authorize('update', $product); 
+        $users = User::orderBy('name')->get();
+        return view('product.edit', compact('product', 'users'));
     }
 
-    public function update(UpdateProductRequest $request, Product $product)
+    public function delete($id)
     {
-        $this->authorize('update', $product);
-
-        $validated = $request->validated();
-        $product->update($validated);
-
-        return redirect()->route('product.index')->with('success', 'Produk berhasil diperbarui.');
-    }
-
-    public function delete(Product $product)
-    {
-        $this->authorize('delete', $product);
-
+        $product = Product::findOrFail($id);
+        Gate::authorize('delete', $product);
         $product->delete();
-
-        return redirect()->route('product.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('product.index')->with('success', 'Product berhasil dihapus');
     }
 }

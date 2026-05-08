@@ -4,22 +4,36 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Routing\Route;
+use Dedoc\Scramble\Scramble;
+
+use Dedoc\Scramble\Support\Generator\OpenApi;
+use Dedoc\Scramble\Support\Generator\SecurityScheme;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function register(): void {}
+    public function register(): void
+    {
+        //
+    }
 
     public function boot(): void
     {
-        // Gate untuk Product — hanya admin
-        Gate::define('manage-product', function (User $user) {
-            return $user->role === 'admin';
+        Scramble::configure()
+            ->routes(function (Route $route) {
+                return Str::startsWith($route->uri, 'api');
+            });
+
+        Gate::define('viewApiDocs', function ($user = null) {
+            return true;
         });
 
-        // Gate untuk Category — hanya admin
-        Gate::define('manage-category', function (User $user) {
-            return $user->role === 'admin';
+        // 👇 INI YANG BAKAL MAKSA KOTAK TOKEN MUNCUL 👇
+        Scramble::extendOpenApi(function (OpenApi $openApi) {
+            $openApi->secure(
+                SecurityScheme::http('bearer')
+            );
         });
     }
 }
